@@ -42,6 +42,7 @@ export default function BuildsAdminTab() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/admin/builds"] });
+      queryClient.refetchQueries({ queryKey: ["/api/admin/builds"] });
       setDeleteConfirm(null);
       toast({
         title: "Succès",
