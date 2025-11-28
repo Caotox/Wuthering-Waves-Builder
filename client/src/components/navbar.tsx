@@ -10,7 +10,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
-import { Menu, X, Heart, Shield, User, LogOut } from "lucide-react";
+import { Menu, X, Heart, Shield, User, LogOut, Waves } from "lucide-react";
 import { useState } from "react";
 
 export function Navbar() {
@@ -24,6 +24,7 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/">
             <a className="flex items-center gap-2 hover-elevate rounded-lg px-3 py-2 transition-colors" data-testid="link-home">
+              <Waves className="h-6 w-6 text-primary" />
               <span className="text-2xl font-serif font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 WW Database
               </span>

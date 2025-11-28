@@ -6,7 +6,7 @@ const sampleCharacters = [
   // 5 Stars Characters
   {
     name: "Rover (Havoc)",
-    imageUrl: "https://www.prydwen.gg/static/4df0b8f46dfe9d8c93c45e15f06ce61d/b26e2/card_rover_havoc.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Rover+Havoc&size=256&background=8b5cf6&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Sword",
     element: "Havoc",
@@ -14,7 +14,7 @@ const sampleCharacters = [
   },
   {
     name: "Rover (Spectro)",
-    imageUrl: "https://www.prydwen.gg/static/5ea2075f4c3b20e02f64bfe12ee4c3e1/b26e2/card_rover_spectro.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Rover+Spectro&size=256&background=fbbf24&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Sword",
     element: "Spectro",
@@ -22,7 +22,7 @@ const sampleCharacters = [
   },
   {
     name: "Jiyan",
-    imageUrl: "https://www.prydwen.gg/static/cb95e8ce1c4bc6aaa3e36698b13bcb35/b26e2/card_jiyan.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Jiyan&size=256&background=10b981&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Broadblade",
     element: "Aero",
@@ -30,7 +30,7 @@ const sampleCharacters = [
   },
   {
     name: "Yinlin",
-    imageUrl: "https://www.prydwen.gg/static/38b96bf4c4e869c3e87b5b6ef61c1f88/b26e2/card_yinlin.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Yinlin&size=256&background=eab308&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Rectifier",
     element: "Electro",
@@ -38,7 +38,7 @@ const sampleCharacters = [
   },
   {
     name: "Calcharo",
-    imageUrl: "https://www.prydwen.gg/static/5b2c9eb4c8b4b63c51e1d90cbed2c7f7/b26e2/card_cal.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Calcharo&size=256&background=eab308&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Broadblade",
     element: "Electro",
@@ -46,7 +46,7 @@ const sampleCharacters = [
   },
   {
     name: "Jinhsi",
-    imageUrl: "https://www.prydwen.gg/static/c8f01d2b23f86e33502a9aeb0d9be05e/b26e2/card_jinhsi.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Jinhsi&size=256&background=fbbf24&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Broadblade",
     element: "Spectro",
@@ -54,7 +54,7 @@ const sampleCharacters = [
   },
   {
     name: "Changli",
-    imageUrl: "https://www.prydwen.gg/static/e8a82e0edc0cde59fa29e23056ef26ad/b26e2/card_changli.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Changli&size=256&background=ef4444&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Sword",
     element: "Fusion",
@@ -62,7 +62,7 @@ const sampleCharacters = [
   },
   {
     name: "Encore",
-    imageUrl: "https://www.prydwen.gg/static/4d7e2de76a32f80ad48f9c52ca91f4d6/b26e2/card_encore.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Encore&size=256&background=ef4444&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Rectifier",
     element: "Fusion",
@@ -70,7 +70,7 @@ const sampleCharacters = [
   },
   {
     name: "Verina",
-    imageUrl: "https://www.prydwen.gg/static/e5b9e03a0cf5b3c2b5a52e3f868e40ca/b26e2/card_verina.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Verina&size=256&background=fbbf24&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Rectifier",
     element: "Spectro",
@@ -78,7 +78,7 @@ const sampleCharacters = [
   },
   {
     name: "Lingyang",
-    imageUrl: "https://www.prydwen.gg/static/ae5caa1b1bfd30a1d7e9b2ec8b6c9f3d/b26e2/card_ling.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Lingyang&size=256&background=3b82f6&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Gauntlets",
     element: "Glacio",
@@ -86,7 +86,7 @@ const sampleCharacters = [
   },
   {
     name: "Shorekeeper",
-    imageUrl: "https://www.prydwen.gg/static/a3b6666d0c8b8c7a8a3b8d2c0e4a4f3b/b26e2/card_shorekeeper.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Shorekeeper&size=256&background=fbbf24&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Rectifier",
     element: "Spectro",
@@ -94,7 +94,7 @@ const sampleCharacters = [
   },
   {
     name: "Xiangli Yao",
-    imageUrl: "https://www.prydwen.gg/static/698d0d5f2ba882de8f3d5494e622e940/b26e2/card_xiang.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Xiangli+Yao&size=256&background=eab308&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Gauntlets",
     element: "Electro",
@@ -102,7 +102,7 @@ const sampleCharacters = [
   },
   {
     name: "Zhezhi",
-    imageUrl: "https://www.prydwen.gg/static/50c9470f533efed9b28076e92230308b/b26e2/card_zhe.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Zhezhi&size=256&background=3b82f6&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Rectifier",
     element: "Glacio",
@@ -110,7 +110,7 @@ const sampleCharacters = [
   },
   {
     name: "Camellya",
-    imageUrl: "https://www.prydwen.gg/static/fa50106c1d7d6d2f02033da9c00628f1/b26e2/card_cam.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Camellya&size=256&background=8b5cf6&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Sword",
     element: "Havoc",
@@ -118,7 +118,7 @@ const sampleCharacters = [
   },
   {
     name: "Carlotta",
-    imageUrl: "https://www.prydwen.gg/static/72a394e25463af4c5b9c309f516c9d17/b26e2/card_carlotta.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Carlotta&size=256&background=3b82f6&color=fff&bold=true&font-size=0.4",
     rarity: 5,
     weaponType: "Pistols",
     element: "Glacio",
@@ -128,7 +128,7 @@ const sampleCharacters = [
   // 4 Stars Characters
   {
     name: "Yuanwu",
-    imageUrl: "https://www.prydwen.gg/static/9b4f3e0c8d2e7f5a3c6b8d9a7e5f4c3b/b26e2/card_yuanwu.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Yuanwu&size=256&background=eab308&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Gauntlets",
     element: "Electro",
@@ -136,7 +136,7 @@ const sampleCharacters = [
   },
   {
     name: "Mortefi",
-    imageUrl: "https://www.prydwen.gg/static/93c19caba0b2a96e4bd2c8a5f2e3d7c8/b26e2/card_mortefi.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Mortefi&size=256&background=ef4444&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Pistols",
     element: "Fusion",
@@ -144,7 +144,7 @@ const sampleCharacters = [
   },
   {
     name: "Aalto",
-    imageUrl: "https://www.prydwen.gg/static/0d7b8c5e4f3a9d2c8b6e7a5f4c3d2e1a/b26e2/card_aalto.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Aalto&size=256&background=10b981&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Pistols",
     element: "Aero",
@@ -152,7 +152,7 @@ const sampleCharacters = [
   },
   {
     name: "Chixia",
-    imageUrl: "https://www.prydwen.gg/static/4a8b5c7e9f2d3a6c8e1b7d5f4c2a3e9b/b26e2/card_chixia.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Chixia&size=256&background=ef4444&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Pistols",
     element: "Fusion",
@@ -160,7 +160,7 @@ const sampleCharacters = [
   },
   {
     name: "Danjin",
-    imageUrl: "https://www.prydwen.gg/static/8c7b5e4f3a9d2c8b6e7a5f4c3d2e1b9a/b26e2/card_danjin.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Danjin&size=256&background=8b5cf6&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Sword",
     element: "Havoc",
@@ -168,7 +168,7 @@ const sampleCharacters = [
   },
   {
     name: "Yangyang",
-    imageUrl: "https://www.prydwen.gg/static/2c7e4a9f5b3d8c6e7a5f4c3d2e1b9a8c/b26e2/card_yangyang.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Yangyang&size=256&background=10b981&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Sword",
     element: "Aero",
@@ -176,7 +176,7 @@ const sampleCharacters = [
   },
   {
     name: "Baizhi",
-    imageUrl: "https://www.prydwen.gg/static/1e7b3c9f5d8a4c6e7a5f4c3d2e1b9a8c/b26e2/card_baizhi.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Baizhi&size=256&background=3b82f6&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Rectifier",
     element: "Glacio",
@@ -184,7 +184,7 @@ const sampleCharacters = [
   },
   {
     name: "Sanhua",
-    imageUrl: "https://www.prydwen.gg/static/5f8c7e4a9d2b3c6e7a5f4c3d2e1b9a8c/b26e2/card_sanhua.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Sanhua&size=256&background=3b82f6&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Sword",
     element: "Glacio",
@@ -192,7 +192,7 @@ const sampleCharacters = [
   },
   {
     name: "Taoqi",
-    imageUrl: "https://www.prydwen.gg/static/3d8c7e4a9f2b5c6e7a5f4c3d2e1b9a8c/b26e2/card_taoqi.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Taoqi&size=256&background=8b5cf6&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Broadblade",
     element: "Havoc",
@@ -200,7 +200,7 @@ const sampleCharacters = [
   },
   {
     name: "Youhu",
-    imageUrl: "https://www.prydwen.gg/static/c4b47996ef9c20aa6c2fc04c9bd7cfa3/b26e2/card_youhu.webp",
+    imageUrl: "https://ui-avatars.com/api/?name=Youhu&size=256&background=3b82f6&color=fff&bold=true&font-size=0.4",
     rarity: 4,
     weaponType: "Gauntlets",
     element: "Glacio",
