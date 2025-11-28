@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+server/public
+vite.config.ts.*
+*.tar.gz
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Misc
+.replit
+replit.md
+attached_assets/
