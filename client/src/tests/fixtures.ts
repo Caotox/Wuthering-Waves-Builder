@@ -7,6 +7,7 @@
  */
 
 // Generate test passwords dynamically to avoid SonarQube security hotspots
+// Math.random() is safe here - only used for test data generation, not cryptography
 export const TEST_PASSWORDS = {
   valid: () => `Test${Math.random().toString(36).slice(2)}123!`,
   withSpecialChars: () => `Pass${Date.now()}@word`,

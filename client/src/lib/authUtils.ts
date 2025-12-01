@@ -31,7 +31,7 @@ export function isValidEmail(email: string): boolean {
     return false;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email) && !email.includes(' ');
 }
 
@@ -51,5 +51,5 @@ export function escapeHtml(unsafe: string): string {
  * Sanitise une entrée utilisateur en retirant les balises HTML
  */
 export function sanitizeInput(input: string): string {
-  return input.replaceAll(/<[^>]*>/g, '');
+  return input.replaceAll(/<[^>]+>/g, '');
 }

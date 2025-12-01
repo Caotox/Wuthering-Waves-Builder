@@ -23,12 +23,12 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
-            <a className="flex items-center gap-2 hover-elevate rounded-lg px-3 py-2 transition-colors" data-testid="link-home">
+            <span className="flex items-center gap-2 hover-elevate rounded-lg px-3 py-2 transition-colors cursor-pointer" data-testid="link-home">
               <Waves className="h-6 w-6 text-primary" />
               <span className="text-2xl font-serif font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 WW Database
               </span>
-            </a>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,23 +36,23 @@ export function Navbar() {
             {isAuthenticated && (
               <>
                 <Link href="/">
-                  <a className="text-sm font-medium hover:text-primary transition-colors" data-testid="link-characters">
+                  <span className="text-sm font-medium hover:text-primary transition-colors cursor-pointer" data-testid="link-characters">
                     Personnages
-                  </a>
+                  </span>
                 </Link>
                 <Link href="/favorites">
-                  <a className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2" data-testid="link-favorites">
+                  <span className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2 cursor-pointer" data-testid="link-favorites">
                     <Heart className="h-4 w-4" />
                     Favoris
-                  </a>
+                  </span>
                 </Link>
                 {user?.role === "ADMIN" && (
                   <Link href="/admin">
-                    <a className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2" data-testid="link-admin">
+                    <span className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-2 cursor-pointer" data-testid="link-admin">
                       <Shield className="h-4 w-4" />
                       Admin
                       <Badge variant="default" className="ml-1">ADMIN</Badge>
-                    </a>
+                    </span>
                   </Link>
                 )}
               </>
@@ -91,19 +91,19 @@ export function Navbar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href="/favorites">
-                      <a className="flex items-center cursor-pointer w-full">
+                      <span className="flex items-center cursor-pointer w-full">
                         <Heart className="h-4 w-4 mr-2" />
                         Mes favoris
-                      </a>
+                      </span>
                     </Link>
                   </DropdownMenuItem>
                   {user.role === "ADMIN" && (
                     <DropdownMenuItem asChild>
                       <Link href="/admin">
-                        <a className="flex items-center cursor-pointer w-full">
+                        <span className="flex items-center cursor-pointer w-full">
                           <Shield className="h-4 w-4 mr-2" />
                           Administration
-                        </a>
+                        </span>
                       </Link>
                     </DropdownMenuItem>
                   )}
@@ -146,31 +146,31 @@ export function Navbar() {
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col space-y-3">
               <Link href="/">
-                <a
-                  className="text-sm font-medium px-3 py-2 rounded-lg hover-elevate transition-colors"
+                <span
+                  className="text-sm font-medium px-3 py-2 rounded-lg hover-elevate transition-colors cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Personnages
-                </a>
+                </span>
               </Link>
               <Link href="/favorites">
-                <a
-                  className="text-sm font-medium px-3 py-2 rounded-lg hover-elevate transition-colors flex items-center gap-2"
+                <span
+                  className="text-sm font-medium px-3 py-2 rounded-lg hover-elevate transition-colors flex items-center gap-2 cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Heart className="h-4 w-4" />
                   Favoris
-                </a>
+                </span>
               </Link>
               {user?.role === "ADMIN" && (
                 <Link href="/admin">
-                  <a
-                    className="text-sm font-medium px-3 py-2 rounded-lg hover-elevate transition-colors flex items-center gap-2"
+                  <span
+                    className="text-sm font-medium px-3 py-2 rounded-lg hover-elevate transition-colors flex items-center gap-2 cursor-pointer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Shield className="h-4 w-4" />
                     Admin
-                  </a>
+                  </span>
                 </Link>
               )}
             </div>

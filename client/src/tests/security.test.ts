@@ -75,7 +75,7 @@ describe('Protection XSS', () => {
 
   it('sanitise les entrées utilisateur', () => {
     const userInput = TEST_XSS_INPUTS.INJECTION_ATTEMPT;
-    const sanitized = userInput.replace(/<[^>]*>/g, '');
+    const sanitized = userInput.replace(/<[^>]+>/g, '');
     
     expect(sanitized).not.toContain('<script>');
     expect(sanitized).toBe('">alert("XSS")');
@@ -84,7 +84,7 @@ describe('Protection XSS', () => {
 
 describe('Validation des entrées', () => {
   it('valide le format email', () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     
     expect(emailRegex.test(TEST_EMAILS.VALID_EMAIL_1)).toBe(true);
     expect(emailRegex.test('invalid.email')).toBe(false);

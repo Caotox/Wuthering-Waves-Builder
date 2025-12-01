@@ -35,13 +35,15 @@ export const isAuthenticated: RequestHandler = (req, res, next) => {
 
 export const isAdmin: RequestHandler = async (req, res, next) => {
   if (!req.session?.userId) {
-    return res.status(401).json({ message: "Non authentifié" });
+    res.status(401).json({ message: "Non authentifié" });
+    return;
   }
 
   try {
     const user = await storage.getUserById(req.session.userId);
     if (!user || user.role !== "ADMIN") {
-      return res.status(403).json({ message: "Accès refusé. Droits administrateur requis." });
+      res.status(403).json({ message: "Accès refusé. Droits administrateur requis." });
+      return;
     }
     next();
   } catch (error) {
