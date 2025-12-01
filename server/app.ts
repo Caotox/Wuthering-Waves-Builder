@@ -32,7 +32,7 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "https:", "http:"],
-      connectSrc: ["'self'", "ws://localhost:*", "wss://localhost:*"],
+      connectSrc: ["'self'", "ws://localhost:*", "wss://localhost:*", "ws://127.0.0.1:*", "wss://127.0.0.1:*"],
       frameSrc: ["'none'"],
       objectSrc: ["'none'"],
     },

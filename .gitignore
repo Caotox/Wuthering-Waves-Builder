@@ -35,6 +35,9 @@ vite.config.ts.*
 *.sqlite
 *.sqlite3
 
+# SSL Certificates (local dev)
+certs/
+
 # Misc
 .replit
 replit.md

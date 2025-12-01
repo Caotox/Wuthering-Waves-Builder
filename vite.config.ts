@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import fs from "fs";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
@@ -32,6 +33,10 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
+    https: {
+      key: fs.readFileSync(path.resolve(import.meta.dirname, "certs/localhost-key.pem")),
+      cert: fs.readFileSync(path.resolve(import.meta.dirname, "certs/localhost-cert.pem")),
+    },
     fs: {
       strict: true,
       deny: ["**/.*"],
