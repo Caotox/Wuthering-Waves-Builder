@@ -137,7 +137,6 @@ export default function Admin() {
     },
   });
 
-  // Mutations pour les utilisateurs
   const updateUserMutation = useMutation({
     mutationFn: async ({ id, data }: { id: string; data: typeof userFormData }) => {
       await apiRequest("PUT", `/api/admin/users/${id}`, data);
@@ -436,7 +435,6 @@ export default function Admin() {
         </Tabs>
       </div>
 
-      {/* Character Form Dialog */}
       <Dialog open={showForm} onOpenChange={(open) => !open && handleCancel()}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
@@ -570,7 +568,6 @@ export default function Admin() {
         </DialogContent>
       </Dialog>
 
-      {/* User Edit Form Dialog */}
       <Dialog open={showUserForm} onOpenChange={(open) => !open && handleUserCancel()}>
         <DialogContent className="max-w-md">
           <DialogHeader>
@@ -641,7 +638,6 @@ export default function Admin() {
         </DialogContent>
       </Dialog>
 
-      {/* Delete Character Confirmation */}
       <AlertDialog open={!!deleteConfirm} onOpenChange={() => setDeleteConfirm(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -663,7 +659,6 @@ export default function Admin() {
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Delete User Confirmation */}
       <AlertDialog open={!!deleteUserConfirm} onOpenChange={() => setDeleteUserConfirm(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>

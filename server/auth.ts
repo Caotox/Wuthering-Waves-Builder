@@ -4,7 +4,6 @@ import { z } from "zod";
 import { storage } from "./storage";
 import { logger } from "./logger";
 
-// Validation schemas conformes aux exigences du cahier des charges
 export const registerSchema = z.object({
   email: z.string().email("Format d'email invalide").max(255, "Email trop long"),
   password: z
@@ -27,7 +26,6 @@ export const loginSchema = z.object({
   password: z.string().min(1, "Le mot de passe est requis"),
 });
 
-// Middleware pour vérifier l'authentification
 export const isAuthenticated: RequestHandler = (req, res, next) => {
   if (!req.session?.userId) {
     return res.status(401).json({ message: "Non authentifié. Veuillez vous connecter." });
@@ -35,7 +33,6 @@ export const isAuthenticated: RequestHandler = (req, res, next) => {
   next();
 };
 
-// Middleware pour vérifier le rôle admin
 export const isAdmin: RequestHandler = async (req, res, next) => {
   if (!req.session?.userId) {
     return res.status(401).json({ message: "Non authentifié" });
@@ -53,18 +50,15 @@ export const isAdmin: RequestHandler = async (req, res, next) => {
   }
 };
 
-// Hash password with bcrypt (10 rounds minimum)
 export async function hashPassword(password: string): Promise<string> {
   const saltRounds = 10;
   return bcrypt.hash(password, saltRounds);
 }
 
-// Verify password
 export async function verifyPassword(password: string, hash: string): Promise<boolean> {
   return bcrypt.compare(password, hash);
 }
 
-// Extend Express Session type
 declare module 'express-session' {
   interface SessionData {
     userId: string;

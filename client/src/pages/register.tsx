@@ -72,7 +72,6 @@ export default function Register() {
         return;
       }
 
-      // Succès - Rediriger vers la page d'accueil et recharger
       window.location.href = "/";
     } catch (error) {
       setErrors(["Erreur lors de l'inscription. Veuillez réessayer."]);

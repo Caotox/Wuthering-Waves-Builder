@@ -35,7 +35,6 @@ export default function Login() {
         return;
       }
 
-      // Succès - Rediriger vers la page d'accueil
       window.location.href = "/";
     } catch (error) {
       setError("Erreur lors de la connexion. Veuillez réessayer.");

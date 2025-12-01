@@ -22,18 +22,15 @@ export default function Home() {
   const [weaponFilter, setWeaponFilter] = useState<string>("all");
   const [elementFilter, setElementFilter] = useState<string>("all");
 
-  // Fetch characters
   const { data: characters = [], isLoading: loadingCharacters } = useQuery<Character[]>({
     queryKey: ["/api/characters"],
   });
 
-  // Fetch user favorites
   const { data: favorites = [] } = useQuery<{characterId: string}[]>({
     queryKey: ["/api/favorites"],
     enabled: !!user,
   });
 
-  // Toggle favorite mutation
   const toggleFavoriteMutation = useMutation({
     mutationFn: async (characterId: string) => {
       const isFavorite = favorites.some(f => f.characterId === characterId);

@@ -7,7 +7,6 @@ import { insertCharacterSchema, insertUserFavoriteSchema, insertCharacterBuildSc
 import { z } from "zod";
 import { logger } from "./logger";
 
-// Schema de validation pour la mise à jour d'utilisateur (admin)
 const updateUserSchema = z.object({
   email: z.string().email().optional(),
   firstName: z.string().min(1).optional(),
@@ -15,7 +14,6 @@ const updateUserSchema = z.object({
   role: z.enum(["USER", "ADMIN"]).optional(),
 }).strict();
 
-// Schema de validation pour la mise à jour de build
 const updateBuildSchema = z.object({
   buildName: z.string().min(1).optional(),
   weapon: z.string().optional(),
@@ -27,10 +25,8 @@ const updateBuildSchema = z.object({
 }).strict();
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Setup authentication
   await setupAuth(app);
 
-  // Characters routes (public read, admin write)
   app.get('/api/characters', async (req, res) => {
     try {
       const characters = await storage.getAllCharacters();

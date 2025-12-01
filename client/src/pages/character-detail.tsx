@@ -127,10 +127,9 @@ export default function CharacterDetail() {
                 const target = e.target as HTMLImageElement;
                 target.src = `https://via.placeholder.com/800/1e293b/64748b?text=${encodeURIComponent(character.name)}`;
               }}
-            />
+            </div>
           </div>
 
-          {/* Character Info */}
           <div className="space-y-6">
             <div>
               <h1 className="text-5xl font-serif font-bold mb-4" data-testid="text-character-name">
