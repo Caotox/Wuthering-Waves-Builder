@@ -1,8 +1,5 @@
 # Wuthering Waves Database
 
-[![Sécurité](https://img.shields.io/badge/S%C3%A9curit%C3%A9-Conforme%20OWASP-green)](https://owasp.org/www-project-top-ten/)
-[![RGPD](https://img.shields.io/badge/RGPD-Conforme-blue)](https://www.cnil.fr/fr/reglement-europeen-protection-donnees)
-
 Base de données sécurisée des personnages de Wuthering Waves - Projet académique de sécurité des applications web.
 
 ## Table des matières
@@ -171,7 +168,7 @@ npx tsx server/seed.ts
 npm run dev
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Variables d'environnement requises
 
