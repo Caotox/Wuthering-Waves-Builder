@@ -110,8 +110,13 @@ export function Navbar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={async () => {
-                      await fetch("/api/logout", { method: "POST" });
-                      window.location.href = "/";
+                      try {
+                        await fetch("/api/logout", { method: "POST", credentials: "include" });
+                        window.location.href = "/";
+                      } catch (error) {
+                        // En cas d'erreur, rediriger quand même vers la page d'accueil
+                        window.location.href = "/";
+                      }
                     }}
                     className="text-destructive focus:text-destructive cursor-pointer"
                     data-testid="button-logout"

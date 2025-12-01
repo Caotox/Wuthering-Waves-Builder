@@ -5,6 +5,7 @@ import { setupAuth } from "./auth-setup";
 import { isAuthenticated, isAdmin } from "./auth";
 import { insertCharacterSchema, insertUserFavoriteSchema, insertCharacterBuildSchema } from "@shared/schema";
 import { z } from "zod";
+import { logger } from "./logger";
 
 // Schema de validation pour la mise à jour d'utilisateur (admin)
 const updateUserSchema = z.object({
@@ -35,7 +36,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const characters = await storage.getAllCharacters();
       res.json(characters);
     } catch (error) {
-      console.error("Error fetching characters:", error);
+      logger.error("Error fetching characters:", error);
       res.status(500).json({ message: "Failed to fetch characters" });
     }
   });
@@ -48,7 +49,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       res.json(character);
     } catch (error) {
-      console.error("Error fetching character:", error);
+      logger.error("Error fetching character:", error);
       res.status(500).json({ message: "Failed to fetch character" });
     }
   });
@@ -90,7 +91,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.deleteCharacter(req.params.id);
       res.status(204).send();
     } catch (error) {
-      console.error("Error deleting character:", error);
+      logger.error("Error deleting character:", error);
       res.status(500).json({ message: "Failed to delete character" });
     }
   });
@@ -103,7 +104,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const usersWithoutPasswords = allUsers.map(({ password, ...user }) => user);
       res.json(usersWithoutPasswords);
     } catch (error) {
-      console.error("Error fetching users:", error);
+      logger.error("Error fetching users:", error);
       res.status(500).json({ message: "Failed to fetch users" });
     }
   });
@@ -147,7 +148,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.deleteUser(userId);
       res.status(204).send();
     } catch (error) {
-      console.error("Error deleting user:", error);
+      logger.error("Error deleting user:", error);
       res.status(500).json({ message: "Failed to delete user" });
     }
   });
@@ -158,7 +159,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const builds = await storage.getAllBuilds();
       res.json(builds);
     } catch (error) {
-      console.error("Error fetching all builds:", error);
+      logger.error("Error fetching all builds:", error);
       res.status(500).json({ message: "Failed to fetch builds" });
     }
   });
@@ -169,7 +170,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.deleteBuild(buildId);
       res.status(204).send();
     } catch (error) {
-      console.error("Error deleting build:", error);
+      logger.error("Error deleting build:", error);
       res.status(500).json({ message: "Failed to delete build" });
     }
   });
@@ -181,7 +182,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const favorites = await storage.getUserFavorites(userId);
       res.json(favorites);
     } catch (error) {
-      console.error("Error fetching favorites:", error);
+      logger.error("Error fetching favorites:", error);
       res.status(500).json({ message: "Failed to fetch favorites" });
     }
   });
@@ -192,7 +193,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const favorites = await storage.getUserFavoritesWithDetails(userId);
       res.json(favorites);
     } catch (error) {
-      console.error("Error fetching favorites with details:", error);
+      logger.error("Error fetching favorites with details:", error);
       res.status(500).json({ message: "Failed to fetch favorites" });
     }
   });
@@ -242,7 +243,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.removeFavorite(userId, characterId);
       res.status(204).send();
     } catch (error) {
-      console.error("Error removing favorite:", error);
+      logger.error("Error removing favorite:", error);
       res.status(500).json({ message: "Failed to remove favorite" });
     }
   });
@@ -254,7 +255,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const builds = await storage.getUserBuilds(userId);
       res.json(builds);
     } catch (error) {
-      console.error("Error fetching builds:", error);
+      logger.error("Error fetching builds:", error);
       res.status(500).json({ message: "Failed to fetch builds" });
     }
   });
@@ -266,7 +267,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const builds = await storage.getCharacterBuilds(characterId, userId);
       res.json(builds);
     } catch (error) {
-      console.error("Error fetching character builds:", error);
+      logger.error("Error fetching character builds:", error);
       res.status(500).json({ message: "Failed to fetch character builds" });
     }
   });
@@ -327,7 +328,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.deleteBuild(buildId);
       res.status(204).send();
     } catch (error) {
-      console.error("Error deleting build:", error);
+      logger.error("Error deleting build:", error);
       res.status(500).json({ message: "Failed to delete build" });
     }
   });

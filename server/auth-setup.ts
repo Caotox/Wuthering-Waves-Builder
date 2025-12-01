@@ -4,6 +4,8 @@ import type { Express } from "express";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
 import { registerSchema, loginSchema, hashPassword, verifyPassword } from "./auth";
+import { authLimiter, createAccountLimiter } from "./rate-limit";
+import { logger } from "./logger";
 import { z } from "zod";
 
 export function getSession() {
@@ -22,7 +24,7 @@ export function getSession() {
     saveUninitialized: false,
     cookie: {
       httpOnly: true, // Protection XSS
-      secure: process.env.NODE_ENV === 'production', // HTTPS en production
+      secure: process.env.NODE_ENV === 'production' || process.env.HTTPS === 'true', // HTTPS en production ou si configuré
       maxAge: sessionTtl,
       sameSite: 'strict', // Protection CSRF
     },
@@ -33,10 +35,10 @@ export async function setupAuth(app: Express) {
   app.set("trust proxy", 1);
   app.use(getSession());
 
-  console.log("Local authentication system initialized");
+  logger.info("Local authentication system initialized");
 
   // POST /api/register - Inscription
-  app.post("/api/register", async (req, res) => {
+  app.post("/api/register", createAccountLimiter, async (req, res) => {
     try {
       // Validation des données
       const validatedData = registerSchema.parse(req.body);
@@ -79,13 +81,13 @@ export async function setupAuth(app: Express) {
           errors: error.errors.map(e => e.message)
         });
       }
-      console.error("Error during registration:", error);
+      logger.error("Error during registration:", error);
       res.status(500).json({ message: "Erreur lors de l'inscription" });
     }
   });
 
   // POST /api/login - Connexion
-  app.post("/api/login", async (req, res) => {
+  app.post("/api/login", authLimiter, async (req, res) => {
     try {
       // Validation des données
       const validatedData = loginSchema.parse(req.body);
@@ -124,7 +126,7 @@ export async function setupAuth(app: Express) {
           message: "Données invalides" 
         });
       }
-      console.error("Error during login:", error);
+      logger.error("Error during login:", error);
       res.status(500).json({ message: "Erreur lors de la connexion" });
     }
   });
@@ -149,7 +151,7 @@ export async function setupAuth(app: Express) {
         role: user.role,
       });
     } catch (error) {
-      console.error("Error fetching user:", error);
+      logger.error("Error fetching user:", error);
       res.status(500).json({ message: "Erreur serveur" });
     }
   });
@@ -158,7 +160,7 @@ export async function setupAuth(app: Express) {
   app.post("/api/logout", (req, res) => {
     req.session.destroy((err) => {
       if (err) {
-        console.error("Error destroying session:", err);
+        logger.error("Error destroying session:", err);
         return res.status(500).json({ message: "Erreur lors de la déconnexion" });
       }
       res.clearCookie('connect.sid');

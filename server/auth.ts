@@ -2,13 +2,15 @@ import bcrypt from "bcrypt";
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import { z } from "zod";
 import { storage } from "./storage";
+import { logger } from "./logger";
 
 // Validation schemas conformes aux exigences du cahier des charges
 export const registerSchema = z.object({
-  email: z.string().email("Format d'email invalide"),
+  email: z.string().email("Format d'email invalide").max(255, "Email trop long"),
   password: z
     .string()
     .min(12, "Le mot de passe doit contenir au moins 12 caractères")
+    .max(128, "Le mot de passe ne peut pas dépasser 128 caractères")
     .regex(/[a-z]/, "Le mot de passe doit contenir au moins une minuscule")
     .regex(/[A-Z]/, "Le mot de passe doit contenir au moins une majuscule")
     .regex(/[0-9]/, "Le mot de passe doit contenir au moins un chiffre")
@@ -21,7 +23,7 @@ export const registerSchema = z.object({
 });
 
 export const loginSchema = z.object({
-  email: z.string().email("Format d'email invalide"),
+  email: z.string().email("Format d'email invalide").max(255, "Email trop long"),
   password: z.string().min(1, "Le mot de passe est requis"),
 });
 
@@ -46,7 +48,7 @@ export const isAdmin: RequestHandler = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    console.error("Error checking admin role:", error);
+    logger.error("Error checking admin role:", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 };

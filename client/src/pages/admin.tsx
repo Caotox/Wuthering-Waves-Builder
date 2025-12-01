@@ -491,7 +491,7 @@ export default function Admin() {
                 <Label htmlFor="rarity">Rareté *</Label>
                 <Select
                   value={formData.rarity.toString()}
-                  onValueChange={(value) => setFormData({ ...formData, rarity: parseInt(value) })}
+                  onValueChange={(value) => setFormData({ ...formData, rarity: Number.parseInt(value, 10) })}
                 >
                   <SelectTrigger data-testid="select-rarity-form">
                     <SelectValue />

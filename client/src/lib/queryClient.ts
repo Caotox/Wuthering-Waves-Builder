@@ -49,9 +49,21 @@ export const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
       staleTime: Infinity,
       retry: false,
+      onError: (error) => {
+        // Log only in development
+        if (import.meta.env.DEV) {
+          console.error("Query error:", error);
+        }
+      },
     },
     mutations: {
       retry: false,
+      onError: (error) => {
+        // Log only in development
+        if (import.meta.env.DEV) {
+          console.error("Mutation error:", error);
+        }
+      },
     },
   },
 });

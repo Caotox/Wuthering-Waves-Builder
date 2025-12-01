@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { hash, compare } from 'bcrypt';
+import { TEST_PASSWORDS, TEST_HASHES, TEST_BCRYPT_ROUNDS, TEST_XSS_INPUTS, TEST_EMAILS } from './fixtures';
 
 // Mock bcrypt pour les tests (éviter les vrais calculs de hash)
 vi.mock('bcrypt', () => ({
@@ -13,20 +14,20 @@ describe('Sécurité des mots de passe (bcrypt)', () => {
   });
 
   it('hash un mot de passe avec bcrypt', async () => {
-    const password = 'MySecurePassword123!';
-    const mockHash = '$2b$10$mockHashedPassword';
+    const password = TEST_PASSWORDS.valid();
+    const mockHash = TEST_HASHES.MOCK_HASH;
     
     vi.mocked(hash).mockResolvedValue(mockHash as any);
     
-    const hashedPassword = await hash(password, 10);
+    const hashedPassword = await hash(password, TEST_BCRYPT_ROUNDS);
     
-    expect(hash).toHaveBeenCalledWith(password, 10);
+    expect(hash).toHaveBeenCalledWith(password, TEST_BCRYPT_ROUNDS);
     expect(hashedPassword).toBe(mockHash);
   });
 
   it('vérifie un mot de passe correct', async () => {
-    const password = 'MySecurePassword123!';
-    const hashedPassword = '$2b$10$mockHashedPassword';
+    const password = TEST_PASSWORDS.valid();
+    const hashedPassword = TEST_HASHES.MOCK_HASH;
     
     vi.mocked(compare).mockResolvedValue(true as any);
     
@@ -37,8 +38,8 @@ describe('Sécurité des mots de passe (bcrypt)', () => {
   });
 
   it('rejette un mot de passe incorrect', async () => {
-    const password = 'WrongPassword123!';
-    const hashedPassword = '$2b$10$mockHashedPassword';
+    const password = TEST_PASSWORDS.valid();
+    const hashedPassword = TEST_HASHES.MOCK_HASH;
     
     vi.mocked(compare).mockResolvedValue(false as any);
     
@@ -49,31 +50,31 @@ describe('Sécurité des mots de passe (bcrypt)', () => {
   });
 
   it('utilise 10 rounds de hashing (sécurité)', async () => {
-    const password = 'TestPassword123!';
-    vi.mocked(hash).mockResolvedValue('$2b$10$hash' as any);
+    const password = TEST_PASSWORDS.valid();
+    vi.mocked(hash).mockResolvedValue(TEST_HASHES.MOCK_HASH_PREFIX as any);
     
-    await hash(password, 10);
+    await hash(password, TEST_BCRYPT_ROUNDS);
     
-    expect(hash).toHaveBeenCalledWith(password, 10);
+    expect(hash).toHaveBeenCalledWith(password, TEST_BCRYPT_ROUNDS);
   });
 });
 
 describe('Protection XSS', () => {
   it('échappe les caractères dangereux dans le HTML', () => {
-    const dangerousString = '<script>alert("XSS")</script>';
+    const dangerousString = TEST_XSS_INPUTS.SCRIPT_TAG;
     const escaped = dangerousString
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#x27;');
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#x27;');
     
     expect(escaped).not.toContain('<script>');
     expect(escaped).toBe('&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;');
   });
 
   it('sanitise les entrées utilisateur', () => {
-    const userInput = '"><script>alert("XSS")</script>';
+    const userInput = TEST_XSS_INPUTS.INJECTION_ATTEMPT;
     const sanitized = userInput.replace(/<[^>]*>/g, '');
     
     expect(sanitized).not.toContain('<script>');
@@ -85,7 +86,7 @@ describe('Validation des entrées', () => {
   it('valide le format email', () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    expect(emailRegex.test('valid@email.com')).toBe(true);
+    expect(emailRegex.test(TEST_EMAILS.VALID_EMAIL_1)).toBe(true);
     expect(emailRegex.test('invalid.email')).toBe(false);
     expect(emailRegex.test('no@domain')).toBe(false);
     expect(emailRegex.test('@nodomain.com')).toBe(false);
@@ -101,7 +102,7 @@ describe('Validation des entrées', () => {
   });
 
   it('rejette les caractères SQL dangereux', () => {
-    const sqlInjectionAttempt = "'; DROP TABLE users; --";
+    const sqlInjectionAttempt = TEST_XSS_INPUTS.SQL_INJECTION;
     const hasDangerousChars = /['";\\]/.test(sqlInjectionAttempt);
     
     expect(hasDangerousChars).toBe(true);

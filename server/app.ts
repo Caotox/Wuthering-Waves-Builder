@@ -8,6 +8,7 @@ import express, {
   NextFunction,
 } from "express";
 import helmet from "helmet";
+import { logger } from "./logger";
 
 import { registerRoutes } from "./routes";
 
@@ -31,10 +32,14 @@ app.use(helmet({
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https:", "http:"],
-      connectSrc: ["'self'", "ws://localhost:*", "wss://localhost:*", "ws://127.0.0.1:*", "wss://127.0.0.1:*"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: process.env.NODE_ENV === 'production' 
+        ? ["'self'"]
+        : ["'self'", "ws://localhost:*", "wss://localhost:*", "ws://127.0.0.1:*", "wss://127.0.0.1:*"],
       frameSrc: ["'none'"],
       objectSrc: ["'none'"],
+      baseUri: ["'self'"],
+      formAction: ["'self'"],
     },
     ...(process.env.NODE_ENV === 'production' && { upgradeInsecureRequests: [] }),
   },
@@ -49,6 +54,9 @@ app.use(helmet({
   noSniff: true,
   xssFilter: true,
   hidePoweredBy: true,
+  referrerPolicy: {
+    policy: 'strict-origin-when-cross-origin',
+  },
 }));
 
 declare module 'http' {
@@ -109,7 +117,7 @@ export default async function runApp(
     res.status(status).json({ message });
     
     if (status === 500) {
-      console.error("Server error:", err);
+      logger.error("Server error:", err);
     }
   });
 

@@ -424,14 +424,29 @@ export default function CharacterBuilds({ characterId }: CharacterBuildsProps) {
                 <Card key={build.id} className={`border-2 hover:shadow-lg transition-all cursor-pointer ${isFavorite ? 'ring-2 ring-yellow-500' : ''}`}>
                   <CardHeader className="pb-3">
                     <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1" onClick={() => handleView(build)}>
+                      <div 
+                        className="flex-1 cursor-pointer" 
+                        onClick={() => handleView(build)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleView(build)}
+                        role="button"
+                        tabIndex={0}
+                      >
                         <CardTitle className="text-lg flex items-center gap-2 flex-wrap">
                           <Star 
-                            className={`h-5 w-5 ${isFavorite ? 'text-yellow-500 fill-yellow-500' : 'text-yellow-500'}`}
+                            className={`h-5 w-5 cursor-pointer ${isFavorite ? 'text-yellow-500 fill-yellow-500' : 'text-yellow-500'}`}
                             onClick={(e) => {
                               e.stopPropagation();
                               toggleFavorite(build.id);
                             }}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                e.stopPropagation();
+                                toggleFavorite(build.id);
+                              }
+                            }}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
                           />
                           {build.buildName}
                           {buildRole && (

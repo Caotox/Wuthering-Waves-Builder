@@ -40,16 +40,16 @@ export function isValidEmail(email: string): boolean {
  */
 export function escapeHtml(unsafe: string): string {
   return unsafe
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;');
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#x27;');
 }
 
 /**
  * Sanitise une entrée utilisateur en retirant les balises HTML
  */
 export function sanitizeInput(input: string): string {
-  return input.replace(/<[^>]*>/g, '');
+  return input.replaceAll(/<[^>]*>/g, '');
 }
