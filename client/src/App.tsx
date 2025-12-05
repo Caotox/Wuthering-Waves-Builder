@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/useAuth";
 import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { ErrorBoundary } from "@/components/error-boundary";
 import Landing from "@/pages/landing";
 import Register from "@/pages/register";
@@ -49,10 +50,13 @@ function AppContent() {
   const { isAuthenticated, isLoading } = useAuth();
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       {!isLoading && isAuthenticated && <Navbar />}
-      <Router />
-    </>
+      <main className="flex-1">
+        <Router />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

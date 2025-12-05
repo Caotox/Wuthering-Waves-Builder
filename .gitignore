@@ -40,3 +40,8 @@ certs/
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+# Fichiers temporaires de test
+cookies.txt
+npm-audit-report.json
+test-results.txt
