@@ -45,3 +45,7 @@ certs/
 cookies.txt
 npm-audit-report.json
 test-results.txt
+
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md

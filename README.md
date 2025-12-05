@@ -151,11 +151,67 @@ npm run db:seed
 
 #### 7. Créer un compte administrateur
 
-```bash
-npx tsx server/add-admin.ts
+**Important : Pour des raisons de sécurité, créez l'administrateur directement dans PostgreSQL.**
+
+**Option A : Via psql (ligne de commande)**
+
+```sql
+-- Se connecter à la base de données wuthering_db
+\c wuthering_db
+
+-- Insérer l'utilisateur administrateur
+-- Note : Le mot de passe doit être haché avec bcrypt (10 rounds minimum)
+-- Utilisez un outil de génération de hash bcrypt en ligne ou via Node.js
+
+INSERT INTO users (email, password, "firstName", "lastName", role, "createdAt")
+VALUES (
+  'Manel@educentre.fr',
+  '$2b$10$hash_bcrypt_genere_ici', -- (voir génération du hash ci-dessous)
+  'Manel',
+  'Benhamouda',
+  'ADMIN',
+  NOW()
+);
 ```
 
-Ou créer un administrateur personnalisé en modifiant `server/add-admin.ts`.
+**Option B : Via pgAdmin (interface graphique)**
+
+1. Ouvrir pgAdmin et se connecter à votre serveur PostgreSQL
+2. Dans le panneau de gauche, naviguer vers : **Servers → PostgreSQL → Databases → wuthering_db → Schemas → public → Tables → users**
+3. Clic droit sur **users** → **View/Edit Data** → **All Rows**
+4. Cliquer sur le bouton **"+"** (Ajouter une ligne) dans la barre d'outils
+5. Remplir les champs suivants :
+   - **email :** `Manel@educentre.fr`
+   - **password :** `$2b$10$hash_bcrypt_genere_ici` (voir génération du hash ci-dessous)
+   - **firstName :** `Manel`
+   - **lastName :** `Benhamouda`
+   - **role :** `ADMIN`
+   - **createdAt :** Laisser vide ou utiliser la date actuelle
+6. Cliquer sur **F6** ou le bouton **"Sauvegarder"** pour enregistrer
+
+**Alternative via Query Tool dans pgAdmin :**
+
+1. Ouvrir pgAdmin et se connecter à votre serveur PostgreSQL
+2. Clic droit sur **wuthering_db** → **Query Tool**
+3. Coller la requête SQL ci-dessus dans l'éditeur
+4. Cliquer sur **F5** ou le bouton **"Exécuter"** (▶️) pour exécuter la requête
+
+**Génération du hash bcrypt du mot de passe :**
+
+```bash
+# Méthode 1 : Avec Node.js
+node -e "const bcrypt = require('bcrypt'); bcrypt.hash('ManelBenhamouda1234!', 10, (err, hash) => console.log(hash));"
+
+# Ou créez un fichier temporaire hash-password.js :
+# const bcrypt = require('bcrypt');
+# bcrypt.hash('ManelBenhamouda1234!', 10, (err, hash) => console.log(hash));
+# node hash-password.js
+```
+
+**Informations de connexion administrateur :**
+- **Email :** `Manel@educentre.fr`
+- **Mot de passe :** `ManelBenhamouda1234!`
+- **Rôle :** ADMIN
 
 #### 8. Démarrer l'application
 
