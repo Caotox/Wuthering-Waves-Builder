@@ -38,10 +38,5 @@ vite.config.ts.*
 # SSL Certificates (local dev)
 certs/
 
-# Misc
-.replit
-replit.md
-
-
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
