@@ -32,10 +32,18 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    https: {
-      key: fs.readFileSync(path.resolve(import.meta.dirname, "certs/localhost-key.pem")),
-      cert: fs.readFileSync(path.resolve(import.meta.dirname, "certs/localhost-cert.pem")),
-    },
+    https: (() => {
+      const keyPath = path.resolve(import.meta.dirname, "certs/localhost-key.pem");
+      const certPath = path.resolve(import.meta.dirname, "certs/localhost-cert.pem");
+      
+      if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
+        return {
+          key: fs.readFileSync(keyPath),
+          cert: fs.readFileSync(certPath),
+        };
+      }
+      return undefined;
+    })(),
     fs: {
       strict: true,
       deny: ["**/.*"],
