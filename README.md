@@ -70,6 +70,15 @@ GRANT ALL PRIVILEGES ON DATABASE wuthering_db TO wuthering_user;
 2. Clic droit sur "Databases" → "Create" → "Database"
 3. Nom : `wuthering_db`
 4. Sauvegarder
+5. Clic droit sur "Login/Group Roles" → "Create" → "Login/Group Roles"
+6. Nom: `wuthering_user`
+7. Mettre le mot de passe pour l'utilisateur `wuthering_user` dans "Definition"
+8. Cocher "Can login" et "Superuser" dans "Privileges"
+9. Sauvegarder
+10. Clic droit sur "wuthering_db" → "Properties"
+11. Ajouter `wuthering_user` dans "Security" → "Privileges"
+12. Cocher "ALL" dans "Privileges" lors de l'ajout de `wuthering_user` dans "Security"
+13. Sauvegarder
 
 #### 4. Configurer les variables d'environnement
 
