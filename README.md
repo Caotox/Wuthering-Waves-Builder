@@ -7,17 +7,17 @@
 
 Application web full-stack **hautement sécurisée** de gestion des personnages de Wuthering Waves. Projet académique démontrant l'implémentation des **standards de sécurité OWASP Top 10** et la **conformité RGPD**.
 
-## 🎯 Table des matières
+## Table des matières
 
-- [🚀 Installation](#installation)
-- [⚙️ Configuration](#configuration)
-- [💻 Utilisation](#utilisation)
-- [✨ Fonctionnalités](#fonctionnalités)
-- [🔒 Sécurité](#sécurité)
-- [🛠️ Technologies](#technologies)
-- [📋 Conformité RGPD](#conformité-rgpd)
-- [📚 Documentation](#documentation)
-- [🧪 Tests](#tests)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Utilisation](#utilisation)
+- [Fonctionnalités](#fonctionnalités)
+- [Sécurité](#sécurité)
+- [Technologies](#technologies)
+- [Conformité RGPD](#conformité-rgpd)
+- [Documentation](#documentation)
+- [Tests](#tests)
 
 ## Installation
 
@@ -504,7 +504,7 @@ Nous ne collectons **JAMAIS** :
 - `/legal` : Mentions légales complètes
 - `/privacy` : Politique de confidentialité détaillée
 
-## 🧪 Tests
+## Tests
 
 ### Exécuter les tests
 
@@ -534,7 +534,7 @@ npm run test:coverage
 
 ### Score global : A+ (100%)
 
-**Conformité OWASP Top 10 2021** : ✅ 10/10
+**Conformité OWASP Top 10 2021** : 10/10
 
 | Protection | Status | Détails |
 |------------|--------|---------|
@@ -570,14 +570,14 @@ $ npm audit
 ### En-têtes de sécurité HTTP
 
 ```
-✅ Content-Security-Policy: default-src 'self'; frame-src 'none'; ...
-✅ X-Frame-Options: DENY
-✅ X-Content-Type-Options: nosniff
-✅ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-✅ Referrer-Policy: strict-origin-when-cross-origin
+Content-Security-Policy: default-src 'self'; frame-src 'none'; ...
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Referrer-Policy: strict-origin-when-cross-origin
 ```
 
-## 📚 Documentation
+## Documentation
 
 - 📖 [Guide de sécurité complet](./SECURITY.md)
 - 📖 [Documentation HTTPS local](./docs/HTTPS_LOCAL.md)
@@ -585,7 +585,7 @@ $ npm audit
 - 📖 [Guide des tests](./docs/TESTS.md)
 - 📖 [Architecture](./SECURITY.md#architecture-de-sécurité)
 
-## 🔗 Ressources externes
+## Ressources externes
 
 - [OWASP Top 10 2021](https://owasp.org/www-project-top-ten/)
 - [RGPD - CNIL](https://www.cnil.fr/fr/reglement-europeen-protection-donnees)
@@ -593,15 +593,15 @@ $ npm audit
 - [Helmet.js Security Headers](https://helmetjs.github.io/)
 - [Drizzle ORM](https://orm.drizzle.team/)
 
-## 👥 Contribution
+## Contribution
 
 Ce projet est un exercice académique. Les contributions ne sont pas acceptées pour le moment.
 
-## 📄 Licence
+## Licence
 
 MIT License - Ce projet est réalisé à des fins pédagogiques uniquement.
 
-## 👨‍💻 Auteur
+## Auteur
 
 **Projet académique** - Module Sécurité des Applications Web  
 École : EduCentre  
