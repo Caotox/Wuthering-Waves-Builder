@@ -109,7 +109,7 @@ cp .env.example .env
 
 ```env
 # Base de données PostgreSQL
-DATABASE_URL="postgresql://wuthering_user:your_secure_password@localhost:5432/wuthering_db"
+DATABASE_URL="postgresql://wuthering_user:your_secure_password@localhost:port_de_votre_pgsql/wuthering_db"
 
 # Clé secrète pour les sessions (générer une clé aléatoire forte)
 SESSION_SECRET="votre-cle-secrete-de-32-caracteres-minimum"
@@ -164,7 +164,7 @@ Ou créer un administrateur personnalisé en modifiant `server/add-admin.ts`.
 npm run dev
 ```
 
-L'application sera accessible sur [http://localhost:5173](http://localhost:5173)
+L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
 
 **Mode production :**
 ```bash
@@ -180,12 +180,12 @@ npm start
 Si tout s'est bien passé, vous devriez voir :
 
 ```bash
-  ➜  Local:   http://localhost:5173/
+  ➜  Local:   http://localhost:3000/
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
 ```
 
-Ouvrez votre navigateur et accédez à [http://localhost:5173](http://localhost:5173)
+Ouvrez votre navigateur et accédez à [http://localhost:3000](http://localhost:3000)
 
 ## Fonctionnalités
 
@@ -363,7 +363,7 @@ SESSION_SECRET="a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6"
 NODE_ENV="development"
 
 # Server
-PORT=5173
+PORT=3000
 ```
 
 ### Sécurité de la configuration
