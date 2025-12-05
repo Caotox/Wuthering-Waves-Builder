@@ -58,8 +58,25 @@ psql -U postgres
 CREATE DATABASE wuthering_db;
 
 # Créer un utilisateur (optionnel mais recommandé)
-CREATE USER wuthering_user WITH ENCRYPTED PASSWORD 'your_secure_password';
+CREATE USER wuthering_user WITH ENCRYPTED PASSWORD 'VotreMdpFort123!@#';
+
+#Donner les privilèges sur la base de données
 GRANT ALL PRIVILEGES ON DATABASE wuthering_db TO wuthering_user;
+
+#Se connecter à la base wuthering_db
+\c wuthering_db
+
+#Donner les permissions sur le schéma public (CRITIQUE pour éviter "permission denied")
+GRANT ALL ON SCHEMA public TO wuthering_user;
+ALTER SCHEMA public OWNER TO wuthering_user;
+
+#Donner les permissions par défaut pour les futures tables
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO wuthering_user;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO wuthering_user;
+
+#Vérifier les permissions
+\du wuthering_user
+
 
 # Quitter psql
 \q
